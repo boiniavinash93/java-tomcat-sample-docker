@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
-                sh 'mvn clean package'
+                def mvnHome = tool name: 'Apache Maven 3.6.3', type: 'maven'
+                sh "${mvnHome}/bin/mvn -f pom.xml 'mvn clean package'
             }
             post {
                 success {
