@@ -21,5 +21,11 @@ pipeline {
             }
         }
 
+        stage('Deploy Tomcat Docker Image'){
+            steps {
+                sh "docker container run -p 8088:8080 tomcatsamplewebapp:${env.BUILD_ID}"
+            }
+        }
+
     }
 }
